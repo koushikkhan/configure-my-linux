@@ -19,6 +19,6 @@ Below are some of the utilities that are provided by the scripts -
 + setting up `auto-cpufreq` for controlling cpu frequency 
 and many more.
 
-*Permission is hereby granted for modifying and distributing the same. Please note
+*Permission is hereby granted for modifying the scripts and distributing the same. Please note
 that some parts of the scripts may need modifications to cater your needs, use these
 at your own risk.*
