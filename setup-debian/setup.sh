@@ -16,18 +16,40 @@ sudo apt-add-repository contrib
 
 
 ## remove applications (optional, uncomment if needed)
-# echo -e "\nINFO: removing unused applications ...\n"
-# sudo apt remove -y --purge gnome-games gnome-contacts gnome-maps \
-# gnome-weather && \
-# sudo apt autoremove
-
+echo -e "\nINFO: removing unused applications / bloatwares ...\n"
+sudo apt remove -y --purge \
+gnome-games \ 
+cheese \
+evolution \
+evolution-ews \
+gnome-boxes \
+gnome-calendar \
+gnome-contacts \
+gnome-dictionary \
+gnome-documents \
+gnome-getting-started-docs \
+gnome-initial-setup \
+gnome-maps \
+gnome-online-miners \
+gnome-photos \
+gnome-software \
+gnome-user-docs \
+gnome-user-share \
+gnome-video-effects \
+gnome-weather \
+simple-scan \
+totem \
+yelp \
+rhythmbox* && \
+sudo apt autoremove
 
 
 ## configure icons and themes
 echo -e "\nINFO: installing additional themes and icons ...\n"
-sudo tar -xvf ./icons/macOSBigSur.tar.gz -C /usr/share/icons && \
+wget -qO- https://git.io/papirus-icon-theme-install | sh && \
 sudo tar -xvf ./icons/Pop_Cyan.tar.gz -C /usr/share/icons && \
 sudo tar -xvf ./icons/Pop_Cyan_Dark.tar.gz -C /usr/share/icons && \
+sudo tar -xvf ./icons/macOSBigSur.tar.gz -C /usr/share/icons && \
 sudo tar -xvf ./themes/Prof-Gnome-Dark-3.6.tar.xz -C /usr/share/themes && \
 sudo tar -xvf ./themes/Prof-Gnome-Darker-3.6.tar.xz -C /usr/share/themes && \
 sudo tar -xvf ./themes/Prof-Gnome-Light-3.6.tar.xz -C /usr/share/themes && \
@@ -112,12 +134,19 @@ fi
 
 
 ## setup auto-cpufreq
-if [ -d "$AUTOCPUFREQ_DIR" ]; then
-    echo -e "\nINFO: $AUTOCPUFREQ_DIR already exists, seems like 'auto-cpufreq' has already been configured ...\n"
-else
-    git clone https://github.com/AdnanHodzic/auto-cpufreq.git $AUTOCPUFREQ_DIR && \
+status=$(systemctl is-active auto-cpufreq.service)
+if [ $status == "inactive" ]; then
+    
+    if [ -d "$AUTOCPUFREQ_DIR" ]; then
+    echo -e "\nINFO: $AUTOCPUFREQ_DIR already exists, skipping 'git clone' ...\n"
+    else
+        git clone https://github.com/AdnanHodzic/auto-cpufreq.git $AUTOCPUFREQ_DIR
+    fi
     sudo bash "$AUTOCPUFREQ_DIR/auto-cpufreq-installer" && \
     sudo auto-cpufreq --install
+
+else
+    echo "'auto-cpufreq.service' is already enabled, skipping installation ... \n"
 fi
 
 
