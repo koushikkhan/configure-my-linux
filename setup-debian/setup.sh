@@ -12,7 +12,8 @@ sudo apt clean
 ## add non-free and contrib sources
 echo -e "\nINFO: setting up additional package sources ...\n"
 sudo apt-add-repository non-free && \
-sudo apt-add-repository contrib
+sudo apt-add-repository contrib && \
+sudo apt update
 
 
 ## remove applications (optional, uncomment if needed)
