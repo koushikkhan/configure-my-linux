@@ -44,16 +44,11 @@ rhythmbox* && \
 sudo apt autoremove
 
 
-## configure icons and themes
+## install additional icons and themes
 echo -e "\nINFO: installing additional themes and icons ...\n"
 wget -qO- https://git.io/papirus-icon-theme-install | sh && \
-sudo tar -xvf ./icons/Pop_Cyan.tar.gz -C /usr/share/icons && \
-sudo tar -xvf ./icons/Pop_Cyan_Dark.tar.gz -C /usr/share/icons && \
-sudo tar -xvf ./icons/macOSBigSur.tar.gz -C /usr/share/icons && \
-sudo tar -xvf ./themes/Prof-Gnome-Dark-3.6.tar.xz -C /usr/share/themes && \
-sudo tar -xvf ./themes/Prof-Gnome-Darker-3.6.tar.xz -C /usr/share/themes && \
-sudo tar -xvf ./themes/Prof-Gnome-Light-3.6.tar.xz -C /usr/share/themes && \
-sudo tar -xvf ./themes/Prof-Gnome-Light-DS-3.6.tar.xz -C /usr/share/themes
+for file in ./icons/*.tar.*; do tar -xvf "$file" -C /usr/share/icons/; done && \
+for file in ./themes/*.tar.*; do tar -xvf "$file" -C /usr/share/themes/; done
 
 
 ## install additional fonts
@@ -84,7 +79,7 @@ echo -e "\nINFO: configuring additional packages ...\n"
 sudo apt update && \
 sudo apt -y install git tlp powertop fonts-roboto \
 tlp-rdw gimp gnome-tweak-tool vlc curl wget synaptic \
-gparted stacer gstreamer1.0-plugins-good micro \
+gparted stacer gstreamer1.0-plugins-good micro arc-theme \
 gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly \
 dconf-editor timeshift p7zip-full p7zip-rar rar unrar
 
