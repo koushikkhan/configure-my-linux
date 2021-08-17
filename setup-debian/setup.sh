@@ -1,7 +1,8 @@
 #!/bin/bash
 
+
 # clear screen
-clear && sleep 3
+clear && sleep 2
 
 
 ## clean apt cache
@@ -38,11 +39,14 @@ gnome-user-docs \
 gnome-user-share \
 gnome-video-effects \
 gnome-weather \
+gnome-todo \
 simple-scan \
 totem \
 yelp \
 rhythmbox* && \
 sudo apt autoremove
+# note: you can search for installed applications 
+# using "apt list --installed | grep gnome-*"
 
 
 ## install additional icons and themes
@@ -110,7 +114,7 @@ else
     echo -e "\nINFO: creating miniconda installation directory ...\n"
     bash "$DL_PKGS_DIR/miniconda.sh" -b -p $MINICONDA_INSTALL_DIR && \
     sudo chown -R $USER:$USER $MINICONDA_INSTALL_DIR && \
-    cp /home/$USER/.bashrc "$BKP_DIR/.bashrc.bak" && \
+    cp /home/$USER/.bashrc "$BKP_DIR/.bashrc.backup" && \
     echo -e "\n\n# miniconda configuration\nexport PATH="$MINICONDA_INSTALL_DIR/bin":$PATH" \
     >> /home/$USER/.bashrc
 fi
