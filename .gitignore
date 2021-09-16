@@ -1,1 +1,3 @@
-setup-debian/deb-pkgs/*.deb
+resources/deb-pkgs/*.deb
+resources/themes/*.tar.*
+resources/icons/*.tar.*
