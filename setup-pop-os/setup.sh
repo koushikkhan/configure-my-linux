@@ -10,7 +10,7 @@ echo -e "\n\n"
 echo "###### ############################ ######"
 echo "###### Initial System Configuration ######"
 echo "###### ############################ ######"
-echo -e "\n"
+echo -e "\n\n"
 
 
 ## Define System Variables
@@ -23,15 +23,16 @@ PYTHON_INSTALL_DIR="/home/$SUDO_USER/miniconda"
 
 
 ## Update repositories
-apt-get -y update
+apt-get -y update;
+echo -e "\n\n"
 
 
 ## Remove bloatwares
 apt-get remove -y --purge \
 gnome-contacts \
 gnome-weather \
-geary \
-totem
+geary totem;
+echo -e "\n\n"
 
 
 ## Install some required packages from repo
@@ -39,28 +40,33 @@ apt-get install -y git tlp tlp-rdw powertop \
 fonts-roboto gnome-tweaks curl wget gparted \
 stacer micro timeshift p7zip-full p7zip-rar \
 rar unrar ubuntu-restricted-extras parole \
-htop neofetch terminator
+htop neofetch terminator gufw;
+echo -e "\n\n"
 
 
 ## Install packages from external sources
-wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash
+wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash;
+echo -e "\n\n"
 
 
 ## Install preferred fonts
 cp -r $FONTS_DIR/* /usr/share/fonts/ && \
-fc-cache -f -v
+fc-cache -f -v;
+echo -e "\n\n"
 
 
 ## Install cursor icons
 for file in $CURSOR_THEMES_DIR/*.tar.*; do 
 	tar -xvf "$file" -C /usr/share/icons/
-done
+done;
+echo -e "\n\n"
 
 
 ## Setup temporary download directory
 if [ ! -d "$RESOURCE_DIR/tmp" ]; then
 	mkdir -p $RESOURCE_DIR/tmp
-fi
+fi;
+echo -e "\n\n"
 
 
 ## Install miniconda python
@@ -81,7 +87,8 @@ if [ ! -d "$PYTHON_INSTALL_DIR" ]; then
 	source /home/$SUDO_USER/.bashrc
 else
 	echo "looks like miniconda is already available"
-fi
+fi;
+echo -e "\n\n"
 
 
 ## Install auto-cpufreq
@@ -104,12 +111,26 @@ if [ $status == "inactive" ]; then
 else
 	echo "auto-cpufreq service status: $(systemctl is-active auto-cpufreq.service)"
     echo "'auto-cpufreq.service' is already enabled, skipping installation ... \n"
-fi
+fi;
+echo -e "\n\n"
+
+
+## Enable services on boot
+serviceToEnable=("fstrim.timer" "ufw.service")
+for service in ${serviceToEnable[@]}; do
+	checkStatus=$(systemctl is-active $service)
+	if [ ! $checkStatus == "active" ]; then
+		systemctl enable $service;
+		echo "$service is now enabled on boot"
+	else
+		echo "$service is already disabled and running"
+done;
+echo -e "\n\n"
 
 
 ## Disable unnecessary systemd services
-serviceList=("bluetooth" "NetworkManager-wait-online" "plymouth-quit-wait" "networkd-dispatcher" "systemd-networkd" "ModemManager")
-for service in ${serviceList[@]}; do
+serviceToDisable=("bluetooth" "NetworkManager-wait-online" "networkd-dispatcher" "systemd-networkd" "ModemManager")
+for service in ${serviceToDisable[@]}; do
 	checkStatus=$(systemctl is-active ${service}.service)
 	if [ ! $checkStatus == "inactive" ]; then
 		systemctl disable ${service}.service;
@@ -117,21 +138,24 @@ for service in ${serviceList[@]}; do
 	else
 		echo "${service}.service is either already disabled or doesn't exist"
 	fi
-done
+done;
+echo -e "\n\n"
 
 
 ## Clean apt cache
-apt-get -y clean
+apt-get -y clean;
+echo -e "\n\n"
 
 
 ## Remove redundant dependencies
-apt-get -y autoremove
+apt-get -y autoremove;
+echo -e "\n\n"
 
 
 ## Remove resources/tmp directory
-rm -rf $RESOURCE_DIR/tmp
+echo -e "Deleting $RESOURCE_DIR/tmp\n\n"
+rm -rf $RESOURCE_DIR/tmp;
 
 
-echo -e "\n"
 echo "# ------ Initial system configuration is now complete! ------ #"
 echo -e "\n\n"
