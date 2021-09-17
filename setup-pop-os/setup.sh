@@ -45,6 +45,7 @@ echo -e "\n\n"
 
 
 ## Install packages from external sources
+# install Joplin note app (optional, comment it if not needed)
 wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash;
 echo -e "\n\n"
 
@@ -159,3 +160,7 @@ rm -rf $RESOURCE_DIR/tmp;
 
 echo "# ------ Initial system configuration is now complete! ------ #"
 echo -e "\n\n"
+
+
+## References for other useful packages
+# GitHub Desktop for linux: https://github.com/shiftkey/desktop/releases
