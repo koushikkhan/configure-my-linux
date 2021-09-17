@@ -34,3 +34,7 @@ else
 		exit 0
 	fi;
 fi;
+
+
+## Reference
+# Tutorial Link: https://tildehacker.com/lenovo-ideapad-battery-conservation-mode-gnu-linux
