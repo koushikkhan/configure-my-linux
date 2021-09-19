@@ -40,7 +40,7 @@ apt-get install -y git tlp tlp-rdw powertop \
 fonts-roboto gnome-tweaks curl wget gparted \
 stacer micro timeshift p7zip-full p7zip-rar \
 rar unrar ubuntu-restricted-extras parole \
-htop neofetch terminator gufw;
+htop neofetch terminator gufw pavucontrol;
 echo -e "\n\n"
 
 
