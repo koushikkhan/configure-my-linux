@@ -124,7 +124,8 @@ for service in ${serviceToEnable[@]}; do
 		systemctl enable $service;
 		echo "$service is now enabled on boot"
 	else
-		echo "$service is already disabled and running"
+		echo "$service is already enabled and running"
+	fi
 done;
 echo -e "\n\n"
 
