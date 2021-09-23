@@ -61,8 +61,9 @@ apt-get install -y git tlp tlp-rdw powertop \
 fonts-roboto curl wget gparted stacer micro timeshift \
 p7zip-full p7zip-rar rar unrar parole htop neofetch \
 terminator gufw pavucontrol papirus-icon-theme plank \
-redshift redshift-gtk lightdm-settings lightdm-gtk-greeter-settings \
-arc-theme gdebi galculator grsync gnome-disk-utility synaptic gimp \
+redshift redshift-gtk slick-greeter lightdm-settings \
+lightdm-gtk-greeter-settings arc-theme gdebi galculator \
+grsync gnome-disk-utility synaptic gimp \
 gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly \
 gstreamer1.0-plugins-good transmission-gtk lsb-release \
 build-essential bash-completion vim
