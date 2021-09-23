@@ -48,8 +48,8 @@ apt-get install -y git tlp tlp-rdw powertop \
 fonts-roboto curl wget gparted stacer micro timeshift \
 p7zip-full p7zip-rar rar unrar parole htop neofetch \
 terminator gufw pavucontrol papirus-icon-theme plank \
-redshift-gtk lightdm-gtk-greeter-settings arc-theme \
-gdebi galculator grsync gnome-disk-utility synaptic gimp \
+redshift redshift-gtk lightdm-settings lightdm-gtk-greeter-settings \
+arc-theme gdebi galculator grsync gnome-disk-utility synaptic gimp \
 gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly \
 gstreamer1.0-plugins-good transmission-gtk lsb-release \
 build-essential bash-completion vim
@@ -58,7 +58,7 @@ echo -e "\n\n"
 
 # Install additional packages offline
 for file in $DEB_PKG_DIR/*.deb; do
-	apt-get install $file
+	apt-get install -y $file
 done
 apt-get -f install
 
@@ -107,7 +107,7 @@ if [ ! -d "$PYTHON_INSTALL_DIR" ]; then
 	chown "$SUDO_USER:$SUDO_USER" /home/$SUDO_USER/.bashrc.backup && \
 	source /home/$SUDO_USER/.bashrc
 else
-	echo "looks like miniconda is already available"
+	echo "---> looks like miniconda is already available"
 fi
 echo -e "\n\n"
 
@@ -127,10 +127,10 @@ if [ $status == "inactive" ]; then
 	# install
 	bash "$RESOURCE_DIR/tmp/auto-cpufreq/auto-cpufreq-installer" && \
 	auto-cpufreq --install
-	echo "auto-cpufreq service status: $(systemctl is-active auto-cpufreq.service)"
+	echo "'auto-cpufreq.service' status: $(systemctl is-active auto-cpufreq.service)"
 else
-	echo "auto-cpufreq service status: $(systemctl is-active auto-cpufreq.service)"
-	echo "'auto-cpufreq.service' is already enabled, skipping installation ... \n"
+	echo "'auto-cpufreq.service' status: $(systemctl is-active auto-cpufreq.service)"
+	echo "---> 'auto-cpufreq.service' is already enabled and running"
 fi
 echo -e "\n\n"
 
