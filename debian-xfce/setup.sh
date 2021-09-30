@@ -186,6 +186,7 @@ echo -e "\n\n"
 ## Perform upgrade
 echo -e "---> looking for upgrade"
 apt-get -y upgrade && apt-get -y dist-upgrade
+echo -e "\n\n"
 
 
 ## Clean apt cache
@@ -203,6 +204,7 @@ echo -e "\n\n"
 ## Remove resources/tmp directory
 echo -e "---> deleting $RESOURCE_DIR/tmp\n\n"
 rm -rf $RESOURCE_DIR/tmp
+echo -e "\n\n"
 
 
 echo "# ------ Initial system configuration is now complete! ------ #"
