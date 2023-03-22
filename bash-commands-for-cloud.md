@@ -16,6 +16,10 @@ Bash Commands to help You Getting Started on Cloud
     id="toc-working-with-files-and-directories"><span
     class="toc-section-number">3.2</span> Working with files and
     directories</a>
+  - <a href="#accessing-files-and-directories-with-permission"
+    id="toc-accessing-files-and-directories-with-permission"><span
+    class="toc-section-number">3.3</span> Accessing files and directories
+    with Permission</a>
 
 # What is Linux?
 
@@ -92,7 +96,7 @@ different location based on our need.
 !date
 ```
 
-    Wed Mar 22 12:36:06 IST 2023
+    Wed Mar 22 16:53:56 IST 2023
 
 #### :point_right: The `pwd` command
 
@@ -103,7 +107,7 @@ the terminal. For me the pwd is `/home/koushik/`
 !pwd
 ```
 
-    /home/koushik
+    /home/koushik/quarto-docs
 
 #### :point_right: The `ls` command
 
@@ -114,9 +118,9 @@ the terminal. For me the pwd is `/home/koushik/`
 !ls
 ```
 
-    R                  bash-commands-for-cloud.qmd  microsoft-r-open
-    bash-commands-for-cloud.ipynb  gems
-    bash-commands-for-cloud.md     koushikkhan.github.io
+    bash-commands-for-cloud.ipynb  koushik.txt     records.txt
+    bash-commands-for-cloud.md     my_first_file.txt
+    bash-commands-for-cloud.qmd    my_second_file.txt
 
 Note that `ls` only returns the files and directories which are not
 hidden, this is the default behavior of `ls`, if you want to see
@@ -131,15 +135,9 @@ I will use some flags below and try to explain what they mean.
 !ls -a
 ```
 
-    .          .ipython           .vscode-server
-    ..         .lesshsQ           .wget-hsts
-    .bash_history  .lesshst           R
-    .bash_logout   .local             bash-commands-for-cloud.ipynb
-    .bashrc        .motd_shown        bash-commands-for-cloud.md
-    .bundle        .profile           bash-commands-for-cloud.qmd
-    .cache         .python_history        gems
-    .config        .sudo_as_admin_successful  koushikkhan.github.io
-    .gitconfig     .vscode-remote-containers  microsoft-r-open
+    .                  bash-commands-for-cloud.md   my_first_file.txt
+    ..                 bash-commands-for-cloud.qmd  my_second_file.txt
+    bash-commands-for-cloud.ipynb  koushik.txt          records.txt
 
 `-a` flag is used for showing all the files and directories within `pwd`
 including hidden ones. In linux hidden files are directories have `.` in
@@ -149,9 +147,9 @@ their names at the the very beginning.
 !ls -h
 ```
 
-    R                  bash-commands-for-cloud.qmd  microsoft-r-open
-    bash-commands-for-cloud.ipynb  gems
-    bash-commands-for-cloud.md     koushikkhan.github.io
+    bash-commands-for-cloud.ipynb  koushik.txt     records.txt
+    bash-commands-for-cloud.md     my_first_file.txt
+    bash-commands-for-cloud.qmd    my_second_file.txt
 
 `-h` flag is used for better representation for the users (human being,
 that’s why `h`)
@@ -160,14 +158,14 @@ that’s why `h`)
 !ls -l
 ```
 
-    total 48
-    drwxr-xr-x  3 koushik koushik  4096 Mar 22 10:09 R
-    -rw-r--r--  1 koushik koushik 10947 Mar 22 12:36 bash-commands-for-cloud.ipynb
-    -rw-r--r--  1 koushik koushik 11906 Mar 22 12:32 bash-commands-for-cloud.md
-    -rw-r--r--  1 koushik koushik  5897 Mar 22 12:36 bash-commands-for-cloud.qmd
-    drwxr-xr-x 10 koushik koushik  4096 Mar 20 20:30 gems
-    drwxr-xr-x 18 koushik koushik  4096 Mar 21 13:02 koushikkhan.github.io
-    drwxr-xr-x  4 koushik koushik  4096 Mar 22 10:44 microsoft-r-open
+    total 60
+    -rw-r--r-- 1 koushik koushik 16593 Mar 22 16:53 bash-commands-for-cloud.ipynb
+    -rw-r--r-- 1 koushik koushik 14653 Mar 22 16:52 bash-commands-for-cloud.md
+    -rw-r--r-- 1 koushik koushik  9455 Mar 22 16:51 bash-commands-for-cloud.qmd
+    -rw-r--r-- 1 koushik koushik    58 Mar 22 12:58 koushik.txt
+    -rw-r--r-- 1 koushik koushik     0 Mar 22 16:52 my_first_file.txt
+    -rw-r--r-- 1 koushik koushik    58 Mar 22 12:49 my_second_file.txt
+    -rw-r--r-- 1 koushik koushik    87 Mar 22 16:52 records.txt
 
 `-l` flag is used for showing entries in a long format
 
@@ -175,9 +173,9 @@ that’s why `h`)
 !ls -t
 ```
 
-    bash-commands-for-cloud.ipynb  microsoft-r-open       gems
-    bash-commands-for-cloud.qmd    R
-    bash-commands-for-cloud.md     koushikkhan.github.io
+    bash-commands-for-cloud.ipynb  my_first_file.txt        my_second_file.txt
+    bash-commands-for-cloud.md     bash-commands-for-cloud.qmd
+    records.txt            koushik.txt
 
 `-t` flag is used for showing entries sorted based on when they are
 created
@@ -186,11 +184,10 @@ created
 !ls -s
 ```
 
-    total 48
-     4 R                   4 gems
-    12 bash-commands-for-cloud.ipynb   4 koushikkhan.github.io
-    12 bash-commands-for-cloud.md      4 microsoft-r-open
-     8 bash-commands-for-cloud.qmd
+    total 60
+    20 bash-commands-for-cloud.ipynb   4 koushik.txt      4 records.txt
+    16 bash-commands-for-cloud.md      0 my_first_file.txt
+    12 bash-commands-for-cloud.qmd     4 my_second_file.txt
 
 `-s` flag is used for showing the allocated sizes of the files
 
@@ -202,34 +199,16 @@ effect of them
 !ls -lahts
 ```
 
-    total 116K
-     12K -rw-r--r--  1 koushik koushik  11K Mar 22 12:36 bash-commands-for-cloud.ipynb
-    4.0K drwxr-xr-x 13 koushik koushik 4.0K Mar 22 12:36 .
-    8.0K -rw-r--r--  1 koushik koushik 5.8K Mar 22 12:36 bash-commands-for-cloud.qmd
-     12K -rw-r--r--  1 koushik koushik  12K Mar 22 12:32 bash-commands-for-cloud.md
-    4.0K -rw-------  1 koushik koushik 3.1K Mar 22 10:49 .bash_history
-    4.0K drwxr-xr-x  4 koushik koushik 4.0K Mar 22 10:44 microsoft-r-open
-    4.0K drwxr-xr-x  3 koushik koushik 4.0K Mar 22 10:09 R
-    4.0K drwxr-xr-x  3 koushik koushik 4.0K Mar 22 09:06 .ipython
-    4.0K -rw-r--r--  1 koushik koushik 3.9K Mar 22 09:05 .bashrc
-    4.0K drwxr-xr-x  6 koushik koushik 4.0K Mar 22 09:04 .local
-    4.0K drwxr-xr-x  5 koushik koushik 4.0K Mar 22 09:03 .cache
-    4.0K -rw-------  1 koushik koushik    7 Mar 22 09:02 .python_history
-    4.0K drwx------  4 koushik koushik 4.0K Mar 22 08:57 .config
-    4.0K -rw-r--r--  1 koushik koushik  165 Mar 22 08:52 .wget-hsts
-       0 -rw-r--r--  1 koushik koushik    0 Mar 22 08:50 .motd_shown
-       0 -rw-------  1 koushik koushik    0 Mar 21 20:32 .lesshsQ
-    4.0K -rw-------  1 koushik koushik   20 Mar 21 20:08 .lesshst
-    4.0K drwxr-xr-x 18 koushik koushik 4.0K Mar 21 13:02 koushikkhan.github.io
-    4.0K drwxr-xr-x  5 koushik koushik 4.0K Mar 21 11:11 .vscode-server
-    4.0K drwxr-xr-x  4 koushik koushik 4.0K Mar 21 10:27 .vscode-remote-containers
-    4.0K -rw-r--r--  1 koushik koushik  129 Mar 20 20:58 .gitconfig
-    4.0K drwxr-xr-x 10 koushik koushik 4.0K Mar 20 20:30 gems
-    4.0K drwxr-xr-x  3 koushik koushik 4.0K Mar 20 20:29 .bundle
-       0 -rw-r--r--  1 koushik koushik    0 Mar 20 19:58 .sudo_as_admin_successful
-    4.0K -rw-r--r--  1 koushik koushik  807 Mar 20 19:58 .profile
-    4.0K -rw-r--r--  1 koushik koushik  220 Mar 20 19:58 .bash_logout
-    4.0K drwxr-xr-x  3 root    root    4.0K Mar 20 19:58 ..
+    total 68K
+     20K -rw-r--r--  1 koushik koushik  17K Mar 22 16:53 bash-commands-for-cloud.ipynb
+    4.0K drwxr-xr-x  2 koushik koushik 4.0K Mar 22 16:53 .
+     16K -rw-r--r--  1 koushik koushik  15K Mar 22 16:52 bash-commands-for-cloud.md
+    4.0K -rw-r--r--  1 koushik koushik   87 Mar 22 16:52 records.txt
+       0 -rw-r--r--  1 koushik koushik    0 Mar 22 16:52 my_first_file.txt
+     12K -rw-r--r--  1 koushik koushik 9.3K Mar 22 16:51 bash-commands-for-cloud.qmd
+    4.0K -rw-r--r--  1 koushik koushik   58 Mar 22 12:58 koushik.txt
+    4.0K -rw-r--r--  1 koushik koushik   58 Mar 22 12:49 my_second_file.txt
+    4.0K drwxr-xr-x 14 koushik koushik 4.0K Mar 22 12:39 ..
 
 One more thing to note here is that, you can use `ls` to see the
 contents of any directory just by putting the path next to `ls` call
@@ -240,7 +219,7 @@ followed by a space character like below
 ```
 
     total 2.0M
-    4.0K drwxrwxrwt   7 root root 4.0K Mar 22 12:36 tmp
+    4.0K drwxrwxrwt   8 root root 4.0K Mar 22 16:53 tmp
     4.0K drwxr-xr-x  80 root root 4.0K Mar 22 10:44 etc
     4.0K drwxr-xr-x   4 root root 4.0K Mar 22 10:44 opt
     4.0K drwx------   3 root root 4.0K Mar 22 10:44 root
@@ -248,7 +227,7 @@ followed by a space character like below
     4.0K drwxr-xr-x  19 root root 4.0K Mar 22 08:50 .
     4.0K drwxr-xr-x  19 root root 4.0K Mar 22 08:50 ..
        0 drwxr-xr-x  11 root root 3.0K Mar 22 08:50 dev
-       0 dr-xr-xr-x 202 root root    0 Mar 22 08:50 proc
+       0 dr-xr-xr-x 206 root root    0 Mar 22 08:50 proc
        0 dr-xr-xr-x  11 root root    0 Mar 22 08:50 sys
     4.0K drwxr-xr-x   3 root root 4.0K Mar 20 19:58 home
     4.0K drwxr-xr-x   5 root root 4.0K Mar 20 19:57 mnt
@@ -278,7 +257,7 @@ this is equivalent to the `C:\` drive on Windows.
 !echo $(date)
 ```
 
-    Wed Mar 22 12:36:07 IST 2023
+    Wed Mar 22 16:53:58 IST 2023
 
 here `date` is evaluated by echo and the output of echo is printed on
 the terminal (or console).
@@ -298,9 +277,9 @@ there are two things to note here:
   and this variable is referred in the `echo` call to print a formatted
   string on the console
 - creation of `name` and calling `echo` are two separate commands which
-  are being executed in a sequence by using `&&` operator a.k.a pipe
-  operator. The `\` is used for breaking the lines to make the command
-  flow through multiple lines.
+  are being executed in a sequence by using `&&` operator. The `\` is
+  used for breaking the lines to make the command flow through multiple
+  lines.
 
 ## Working with files and directories
 
@@ -308,10 +287,127 @@ Now, you know the basics of running commands and getting some simple yet
 useful information, it is the time to see a bit more interesting
 commands.
 
-#### :point_right: creating a file with \`\`
+#### :point_right: Creating a file with `touch`
 
 ``` python
-!echo "Hello"
+!touch my_first_file.txt
 ```
 
-    Hello
+`touch` creates a file with the name given by the user right next to it
+followed by a space character.
+
+#### :point_right: Writing data to a file using `tee`
+
+``` python
+# writing date to file, the file will be created if it does not exist
+!date | tee records.txt
+
+# writing data in append mode with flag '-a'
+!date | tee -a records.txt
+
+# evaluate and then write in append mode
+!echo $(date) | tee -a records.txt
+```
+
+    Wed Mar 22 16:53:58 IST 2023
+
+    Wed Mar 22 16:53:58 IST 2023
+
+    Wed Mar 22 16:53:58 IST 2023
+
+By default, `tee` overwrites the data to the file, `-a` is used to avoid
+this.
+
+We have one more operator (`|`) here, it is called pipe operator. It
+takes the output of the previous command and passes to the next command.
+
+Writing same data to multiple files is also very intuitive as in
+`date | tee -a file1.txt file2.txt file3.txt`
+
+The same operations can also be performed using redirect operator `>`.
+`date > record.txt` will write the system date time by overrwriting the
+file and `date >> record.txt` will write by keeping the previous records
+in the file.
+
+A file can be removed using the `rm` command, e.g. `rm record.txt`
+
+#### :point_right: Working with directory (folder)
+
+``` python
+# create directory with 'mkdir'
+!mkdir test_dir_1
+!mkdir test_dir_2
+
+# create directory recussively along a path with flag '-p'
+!mkdir -p test_dir_1/sub_dir/sub_sub_dir
+
+# remove directories with 'rm'
+!rm -d test_dir_2 # '-d' flag (directory) is used to remove an empty directory
+!rm -r test_dir_1 # '-r' flag (recurive) is used to remove a directory and all of its contents
+# rm -rf test_dir_1 '-f' flag (force) is used to remove a directory and all of its contents forcefully
+```
+
+multiple directories can also be removed just by specifying their paths
+one by one. One very useful flag for `rm` command is `-i`, which makes
+the removal process interactive.
+
+**Note:** In linux, if you add a `.` before the file and diretory name,
+then it will be hidden which means simple `ls` command cannot show you
+these, you must to use `ls -a` to locate them :wink: .
+
+#### :point_right: Searching for files and directories using `grep`
+
+Sometimes you may need a search for a file or directory inside the
+terminal. This can be done using the command called `grep`. It is used
+with `ls` through a pipe operator as if we are telling bash to filter
+the `ls` output by the pattern. See the examples below,
+
+``` python
+# will only show files and directories with thw word 'first' in their names 
+!ls -lahts | grep first
+```
+
+       0 -rw-r--r--  1 koushik koushik    0 Mar 22 16:53 my_first_file.txt
+
+#### :point_right: Editing a file with **nano**
+
+**nano** is a text editor which typically available in almost all linux
+based systems. It is very useful if you quickly want to edit a file
+without leaving the terminal.
+
+`nano <your_file_name>` is the command to open a file with nano. Once
+you are done with the editing, you can use `Ctrl+S` (`Cmd+S` in case
+you’re using clound from a Mac) to save the file and `Ctrl+X` (or
+`Cmd+X` in Mac) to close the editor.
+
+#### :point_right: Viewing the content of a file using `cat`
+
+In case you want to see the content of a file, you have a command called
+`cat`. It has several flags to use based on your requirements. Be
+careful, when using `cat` for a large file, by default it will show you
+everything that is there in the file.
+
+``` python
+cat records.txt
+```
+
+    Wed Mar 22 16:53:58 IST 2023
+    Wed Mar 22 16:53:58 IST 2023
+    Wed Mar 22 16:53:58 IST 2023
+
+You can use the flag `-n` to see the line numbers right before the
+lines.
+
+``` python
+cat -n records.txt
+```
+
+         1  Wed Mar 22 16:53:58 IST 2023
+         2  Wed Mar 22 16:53:58 IST 2023
+         3  Wed Mar 22 16:53:58 IST 2023
+
+## Accessing files and directories with Permission
+
+Depending on role one may have access to certain files and directories
+while the other may not have. These are controlled by setting
+permissions on files and directories.
