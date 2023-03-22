@@ -1,8 +1,8 @@
 Bash Commands to help You Getting Started on Cloud
 ================
 
-- <a href="#what-is-linux-smile" id="toc-what-is-linux-smile"><span
-  class="toc-section-number">1</span> What is Linux? :smile:</a>
+- <a href="#what-is-linux" id="toc-what-is-linux"><span
+  class="toc-section-number">1</span> What is Linux?</a>
 - <a href="#tools-to-communicate-with-linux-based-systems"
   id="toc-tools-to-communicate-with-linux-based-systems"><span
   class="toc-section-number">2</span> Tools to communicate with linux
@@ -17,7 +17,7 @@ Bash Commands to help You Getting Started on Cloud
     class="toc-section-number">3.2</span> Working with files and
     directories</a>
 
-# What is Linux? :smile:
+# What is Linux?
 
 The era of computing has come a long way, starting from the punch hole
 card in 9999 to today’s cloud platforms, a significant progress has been
@@ -74,7 +74,7 @@ different location based on our need.
 
 ## Getting the basic information
 
-#### The `whoami` command
+#### :point_right: The `whoami` command
 
 `whoami` is a command that returns the user name currently logged in.
 
@@ -84,7 +84,7 @@ different location based on our need.
 
     koushik
 
-#### The `date` command
+#### :point_right: The `date` command
 
 `date` gives you the current date and time.
 
@@ -92,9 +92,9 @@ different location based on our need.
 !date
 ```
 
-    Wed Mar 22 12:32:20 IST 2023
+    Wed Mar 22 12:36:06 IST 2023
 
-#### The `pwd` command
+#### :point_right: The `pwd` command
 
 `pwd` stands for the *present working directory* which is pointed out by
 the terminal. For me the pwd is `/home/koushik/`
@@ -105,7 +105,7 @@ the terminal. For me the pwd is `/home/koushik/`
 
     /home/koushik
 
-#### The `ls` command
+#### :point_right: The `ls` command
 
 `ls` stands for listing, which returns all the files and directories
 (folders) availble inside the `pwd`.
@@ -162,9 +162,9 @@ that’s why `h`)
 
     total 48
     drwxr-xr-x  3 koushik koushik  4096 Mar 22 10:09 R
-    -rw-r--r--  1 koushik koushik 10871 Mar 22 12:32 bash-commands-for-cloud.ipynb
-    -rw-r--r--  1 koushik koushik 11906 Mar 22 12:31 bash-commands-for-cloud.md
-    -rw-r--r--  1 koushik koushik  5821 Mar 22 12:32 bash-commands-for-cloud.qmd
+    -rw-r--r--  1 koushik koushik 10947 Mar 22 12:36 bash-commands-for-cloud.ipynb
+    -rw-r--r--  1 koushik koushik 11906 Mar 22 12:32 bash-commands-for-cloud.md
+    -rw-r--r--  1 koushik koushik  5897 Mar 22 12:36 bash-commands-for-cloud.qmd
     drwxr-xr-x 10 koushik koushik  4096 Mar 20 20:30 gems
     drwxr-xr-x 18 koushik koushik  4096 Mar 21 13:02 koushikkhan.github.io
     drwxr-xr-x  4 koushik koushik  4096 Mar 22 10:44 microsoft-r-open
@@ -203,10 +203,10 @@ effect of them
 ```
 
     total 116K
-     12K -rw-r--r--  1 koushik koushik  11K Mar 22 12:32 bash-commands-for-cloud.ipynb
-    4.0K drwxr-xr-x 13 koushik koushik 4.0K Mar 22 12:32 .
-    8.0K -rw-r--r--  1 koushik koushik 5.7K Mar 22 12:32 bash-commands-for-cloud.qmd
-     12K -rw-r--r--  1 koushik koushik  12K Mar 22 12:31 bash-commands-for-cloud.md
+     12K -rw-r--r--  1 koushik koushik  11K Mar 22 12:36 bash-commands-for-cloud.ipynb
+    4.0K drwxr-xr-x 13 koushik koushik 4.0K Mar 22 12:36 .
+    8.0K -rw-r--r--  1 koushik koushik 5.8K Mar 22 12:36 bash-commands-for-cloud.qmd
+     12K -rw-r--r--  1 koushik koushik  12K Mar 22 12:32 bash-commands-for-cloud.md
     4.0K -rw-------  1 koushik koushik 3.1K Mar 22 10:49 .bash_history
     4.0K drwxr-xr-x  4 koushik koushik 4.0K Mar 22 10:44 microsoft-r-open
     4.0K drwxr-xr-x  3 koushik koushik 4.0K Mar 22 10:09 R
@@ -240,7 +240,7 @@ followed by a space character like below
 ```
 
     total 2.0M
-    4.0K drwxrwxrwt   7 root root 4.0K Mar 22 12:32 tmp
+    4.0K drwxrwxrwt   7 root root 4.0K Mar 22 12:36 tmp
     4.0K drwxr-xr-x  80 root root 4.0K Mar 22 10:44 etc
     4.0K drwxr-xr-x   4 root root 4.0K Mar 22 10:44 opt
     4.0K drwx------   3 root root 4.0K Mar 22 10:44 root
@@ -270,7 +270,7 @@ followed by a space character like below
 Here `ls` is showing the contents of a special directory a.k.a `root`,
 this is equivalent to the `C:\` drive on Windows.
 
-#### The `echo` command
+#### :point_right: The `echo` command
 
 `echo` evaluates an expression and prints that on the terminal.
 
@@ -278,7 +278,7 @@ this is equivalent to the `C:\` drive on Windows.
 !echo $(date)
 ```
 
-    Wed Mar 22 12:32:21 IST 2023
+    Wed Mar 22 12:36:07 IST 2023
 
 here `date` is evaluated by echo and the output of echo is printed on
 the terminal (or console).
@@ -308,7 +308,7 @@ Now, you know the basics of running commands and getting some simple yet
 useful information, it is the time to see a bit more interesting
 commands.
 
-#### creating a file with \`\`
+#### :point_right: creating a file with \`\`
 
 ``` python
 !echo "Hello"
