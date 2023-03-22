@@ -1,12 +1,29 @@
-Demonstrating Bash Commands
+Bash Commands to help You Getting Started on Cloud
 ================
 
-# What is Linux?
+- <a href="#what-is-linux-smile" id="toc-what-is-linux-smile"><span
+  class="toc-section-number">1</span> What is Linux? :smile:</a>
+- <a href="#tools-to-communicate-with-linux-based-systems"
+  id="toc-tools-to-communicate-with-linux-based-systems"><span
+  class="toc-section-number">2</span> Tools to communicate with linux
+  based systems</a>
+- <a href="#task-specific-commands" id="toc-task-specific-commands"><span
+  class="toc-section-number">3</span> Task specific commands</a>
+  - <a href="#getting-the-basic-information"
+    id="toc-getting-the-basic-information"><span
+    class="toc-section-number">3.1</span> Getting the basic information</a>
+  - <a href="#working-with-files-and-directories"
+    id="toc-working-with-files-and-directories"><span
+    class="toc-section-number">3.2</span> Working with files and
+    directories</a>
+
+# What is Linux? :smile:
 
 The era of computing has come a long way, starting from the punch hole
 card in 9999 to today’s cloud platforms, a significant progress has been
 made. We are now habituated in using such cloud platforms. The most
-popular example can be Google’s Colab (link), which has made cloud
+popular example can be Google’s
+[Colab](https://colab.research.google.com/), which has made cloud
 computing available for all.
 
 If you have ever used Google’s Colab, you are probably familiar with
@@ -15,13 +32,14 @@ called *Linux Kernel* which powers devices starting from smart phones to
 large cloud servers. So, the fact is knowingly or unknowingly we are
 using devices in our daily lives which are powered by Linux Kernel.
 
-The linux kernel was first developed by Linus Torvald in 9999 as a
+The linux kernel was first developed by Linus Torvald in 1991 as a
 personal hobby project and later it was made available publicly. You can
-refer to this article (wiki for Linux) to know more on this.
+refer to this [article](https://en.wikipedia.org/wiki/Linux_kernel) to
+know more on this.
 
-In this post, I will be sharing some basic linux commands which will
-help you to start your journey with linux based systems, may be on your
-personal computer or on a cloud platform.
+In this post, I will be sharing some basic to intermediate linux
+commands which will help you to start your journey with linux based
+systems, may be on your personal computer or on a cloud platform.
 
 **disclaimer:** I will be using a rendering engine called
 [Quarto](https://quarto.org/) to develop this post as a GitHub flavored
@@ -43,7 +61,7 @@ are different types of shell. Typically, it is the bash shell where bash
 stands for *Borne Again Shell*. Other shell applications available are
 ZShell or Fish (*Friendly Interactive Shell*).
 
-I will be runnning commands on bash shell.
+I will be runnning the commands using bash shell.
 
 # Task specific commands
 
@@ -54,7 +72,11 @@ directory on the system which, by default, is the user’s home directory
 (i.e. the path `/home/<user>/`), which can be reconfigured to point to a
 different location based on our need.
 
-## 1. Getting the some basic informations
+## Getting the basic information
+
+#### The `whoami` command
+
+`whoami` is a command that returns the user name currently logged in.
 
 ``` python
 !whoami
@@ -62,15 +84,20 @@ different location based on our need.
 
     koushik
 
-`whoami` is a command that returns the user name currently logged in.
+#### The `date` command
+
+`date` gives you the current date and time.
 
 ``` python
 !date
 ```
 
-    Wed Mar 22 11:08:16 IST 2023
+    Wed Mar 22 12:32:20 IST 2023
 
-`date` gives you the current date and time.
+#### The `pwd` command
+
+`pwd` stands for the *present working directory* which is pointed out by
+the terminal. For me the pwd is `/home/koushik/`
 
 ``` python
 !pwd
@@ -78,8 +105,10 @@ different location based on our need.
 
     /home/koushik
 
-`pwd` stands for the *present working directory* which is pointed by the
-terminal.
+#### The `ls` command
+
+`ls` stands for listing, which returns all the files and directories
+(folders) availble inside the `pwd`.
 
 ``` python
 !ls
@@ -89,15 +118,14 @@ terminal.
     bash-commands-for-cloud.ipynb  gems
     bash-commands-for-cloud.md     koushikkhan.github.io
 
-`ls` stands for listing, which returns all the files and directories
-(folders) availble inside the directory.
-
 Note that `ls` only returns the files and directories which are not
 hidden, this is the default behavior of `ls`, if you want to see
 something more you need some other options while using it, which are
 often called flags.
 
 I will use some flags below and try to explain what they mean.
+
+**different flags of `ls`**
 
 ``` python
 !ls -a
@@ -133,13 +161,13 @@ that’s why `h`)
 ```
 
     total 48
-    drwxr-xr-x  3 koushik koushik 4096 Mar 22 10:09 R
-    -rw-r--r--  1 koushik koushik 8895 Mar 22 11:08 bash-commands-for-cloud.ipynb
-    -rw-r--r--  1 koushik koushik 9516 Mar 22 10:58 bash-commands-for-cloud.md
-    -rw-r--r--  1 koushik koushik 4705 Mar 22 11:08 bash-commands-for-cloud.qmd
-    drwxr-xr-x 10 koushik koushik 4096 Mar 20 20:30 gems
-    drwxr-xr-x 18 koushik koushik 4096 Mar 21 13:02 koushikkhan.github.io
-    drwxr-xr-x  4 koushik koushik 4096 Mar 22 10:44 microsoft-r-open
+    drwxr-xr-x  3 koushik koushik  4096 Mar 22 10:09 R
+    -rw-r--r--  1 koushik koushik 10871 Mar 22 12:32 bash-commands-for-cloud.ipynb
+    -rw-r--r--  1 koushik koushik 11906 Mar 22 12:31 bash-commands-for-cloud.md
+    -rw-r--r--  1 koushik koushik  5821 Mar 22 12:32 bash-commands-for-cloud.qmd
+    drwxr-xr-x 10 koushik koushik  4096 Mar 20 20:30 gems
+    drwxr-xr-x 18 koushik koushik  4096 Mar 21 13:02 koushikkhan.github.io
+    drwxr-xr-x  4 koushik koushik  4096 Mar 22 10:44 microsoft-r-open
 
 `-l` flag is used for showing entries in a long format
 
@@ -175,10 +203,10 @@ effect of them
 ```
 
     total 116K
-     12K -rw-r--r--  1 koushik koushik 8.7K Mar 22 11:08 bash-commands-for-cloud.ipynb
-    4.0K drwxr-xr-x 13 koushik koushik 4.0K Mar 22 11:08 .
-    8.0K -rw-r--r--  1 koushik koushik 4.6K Mar 22 11:08 bash-commands-for-cloud.qmd
-     12K -rw-r--r--  1 koushik koushik 9.3K Mar 22 10:58 bash-commands-for-cloud.md
+     12K -rw-r--r--  1 koushik koushik  11K Mar 22 12:32 bash-commands-for-cloud.ipynb
+    4.0K drwxr-xr-x 13 koushik koushik 4.0K Mar 22 12:32 .
+    8.0K -rw-r--r--  1 koushik koushik 5.7K Mar 22 12:32 bash-commands-for-cloud.qmd
+     12K -rw-r--r--  1 koushik koushik  12K Mar 22 12:31 bash-commands-for-cloud.md
     4.0K -rw-------  1 koushik koushik 3.1K Mar 22 10:49 .bash_history
     4.0K drwxr-xr-x  4 koushik koushik 4.0K Mar 22 10:44 microsoft-r-open
     4.0K drwxr-xr-x  3 koushik koushik 4.0K Mar 22 10:09 R
@@ -212,7 +240,7 @@ followed by a space character like below
 ```
 
     total 2.0M
-    4.0K drwxrwxrwt   7 root root 4.0K Mar 22 11:08 tmp
+    4.0K drwxrwxrwt   7 root root 4.0K Mar 22 12:32 tmp
     4.0K drwxr-xr-x  80 root root 4.0K Mar 22 10:44 etc
     4.0K drwxr-xr-x   4 root root 4.0K Mar 22 10:44 opt
     4.0K drwx------   3 root root 4.0K Mar 22 10:44 root
@@ -220,7 +248,7 @@ followed by a space character like below
     4.0K drwxr-xr-x  19 root root 4.0K Mar 22 08:50 .
     4.0K drwxr-xr-x  19 root root 4.0K Mar 22 08:50 ..
        0 drwxr-xr-x  11 root root 3.0K Mar 22 08:50 dev
-       0 dr-xr-xr-x 201 root root    0 Mar 22 08:50 proc
+       0 dr-xr-xr-x 202 root root    0 Mar 22 08:50 proc
        0 dr-xr-xr-x  11 root root    0 Mar 22 08:50 sys
     4.0K drwxr-xr-x   3 root root 4.0K Mar 20 19:58 home
     4.0K drwxr-xr-x   5 root root 4.0K Mar 20 19:57 mnt
@@ -242,14 +270,48 @@ followed by a space character like below
 Here `ls` is showing the contents of a special directory a.k.a `root`,
 this is equivalent to the `C:\` drive on Windows.
 
-## Moving towards the next step
+#### The `echo` command
+
+`echo` evaluates an expression and prints that on the terminal.
+
+``` python
+!echo $(date)
+```
+
+    Wed Mar 22 12:32:21 IST 2023
+
+here `date` is evaluated by echo and the output of echo is printed on
+the terminal (or console).
+
+Here is another example of `echo`.
+
+``` python
+!name="Julia" && \
+echo "$name claims to be faster that Python"
+```
+
+    Julia claims to be faster that Python
+
+there are two things to note here:
+
+- we are creating a shell variable called `name` with the value `Julia`
+  and this variable is referred in the `echo` call to print a formatted
+  string on the console
+- creation of `name` and calling `echo` are two separate commands which
+  are being executed in a sequence by using `&&` operator a.k.a pipe
+  operator. The `\` is used for breaking the lines to make the command
+  flow through multiple lines.
+
+## Working with files and directories
 
 Now, you know the basics of running commands and getting some simple yet
 useful information, it is the time to see a bit more interesting
 commands.
 
+#### creating a file with \`\`
+
 ``` python
-!echo "Hello" 
+!echo "Hello"
 ```
 
     Hello
